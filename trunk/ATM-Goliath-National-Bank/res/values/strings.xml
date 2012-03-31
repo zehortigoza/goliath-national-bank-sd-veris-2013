@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, main!</string>
+    <string name="app_name">ATM Goliath National Bank</string>
+    
+    <string name="logo_description">GNB</string>
+    
+    <string name="agency">Agência</string>
+    <string name="account">Conta</string>
+    <string name="access">Acesso</string>
+    
+    <string name="what_is_your_name">Qual é o seu nome?</string>
+    <string name="password">Senha</string>
+    <string name="back">Voltar</string>
+
+</resources>
