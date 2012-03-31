@@ -1,0 +1,60 @@
+request_users_name
+>>ag
+>>cc
+<<list [name, key_user]
+
+auth_account
+>>key_user
+>>pass_user(xx,xx,xx,xx*n)
+<<key_account
+
+can_draw
+>>key_conta
+>>value
+<<true/false
+
+deposit
+>>key_conta
+>>value
+
+extract
+>>key_conta
+<<value
+
+##############
+
+Primeira tela
+CC
+Ag
+
+Segunda tela
+Usuario clica no seu nome ou volta
+
+Terceira tela
+Digita sua senha ou volta
+
+Quarta tela
+Usuario pode: sacar, depositar, extrato ou deslogar
+
+Sacar tela
+Botao voltar
+Printa notas disponiveis
+Le Valor
+Valida se pode sacar, retorna mensagem com as notas entregues
+se não retorna erro
+Volta pra tela Quatro
+
+Deposito tela
+Botao voltar
+Le valor
+Retorna msg ok
+Volta pra tela Quatro
+
+Extrato
+Imprime extrato na tela
+Botão de voltar
+
+##########
+
+
+
