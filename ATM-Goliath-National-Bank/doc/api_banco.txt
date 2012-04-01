@@ -2,10 +2,13 @@ request_users_name
 >>ag
 >>cc
 <<list [name, key_user]
+<<error[1=conta não encontrada, 2=conta inativa]
 
 auth_account
 >>key_user
 >>pass_user(xx,xx,xx,xx*n)
+>>ag(por que um key_user pode ter mais de uma conta certo?!)
+>>cc
 <<key_account
 
 can_draw
