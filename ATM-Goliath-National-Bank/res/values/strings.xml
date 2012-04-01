@@ -14,4 +14,18 @@
     <string name="password">Senha</string>
     <string name="back">Voltar</string>
 
+    <string name="withdraw">Sacar</string>
+    <string name="deposit">Depositar</string>
+    <string name="balance">Extrato</string>
+    <string name="logout">Sair</string>
+    
+    <string name="welcome_msg">Olá ?</string>
+    
+    <string name="notes_available">Notas disponiveis ?</string>
+    <string name="withdraw_value">Qual valor deseja sacar?</string>
+    <string name="error">Erro</string>
+    
+    <string name="deposit_value">Qual valor deseja depositar?</string>
+    
+    <string name="balance_value">Seu saldo é de ?</string>
 </resources>

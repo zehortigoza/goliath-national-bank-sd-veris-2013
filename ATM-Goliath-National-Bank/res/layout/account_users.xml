@@ -105,6 +105,7 @@
                 android:text="@string/password"
                 android:visibility="gone"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:id="@+id/label_password" />
 
             <EditText
@@ -120,7 +121,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/access"
                 android:visibility="gone"
-                android:id="@+id/submit_bnt" />
+                android:id="@+id/submit_bnt"
+                android:onClick="submitUser" />
         </LinearLayout>
     </ScrollView>
 
