@@ -1,6 +1,7 @@
 package com.goliath.atm.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,14 @@ public class AccountUsers extends Activity {
         mLabelPassword = (TextView) findViewById(R.id.label_password);
         mEditPassword = (EditText) findViewById(R.id.password_text);
         mSubmit = (Button) findViewById(R.id.submit_bnt);
+    }
+	
+	@Override
+    public void onResume() {
+		super.onResume();
+    	if(AccountAccess.getLogout()) {
+    		finish();
+    	}
     }
 	
 	@Override
@@ -78,6 +87,12 @@ public class AccountUsers extends Activity {
 	public void nameSelected(View view) {	
 		mNameSelected = true;
 		change();
+	}
+	
+	public void submitUser(View view) {
+		//start http thread...
+		Intent i = new Intent(this,MainScreen.class);
+		startActivity(i);
 	}
 
 }
