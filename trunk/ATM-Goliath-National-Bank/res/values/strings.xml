@@ -28,4 +28,11 @@
     <string name="deposit_value">Qual valor deseja depositar?</string>
     
     <string name="balance_value">Seu saldo é de ?</string>
+    
+    <string name="in_progress">Em progresso</string>
+    <string name="loading">Carregando</string>
+    
+    <string name="generic_error">Houve um erro, certifique-se que você esta conectado a internet.</string>
+    <string name="account_not_found">Conta não encontrada</string>
+   	<string name="account_inative">Conta inativa</string>
 </resources>

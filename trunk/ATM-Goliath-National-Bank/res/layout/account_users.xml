@@ -25,104 +25,68 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-            
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/back"
                 android:layout_gravity="right"
-                android:onClick="back"/>
+                android:onClick="back"
+                android:text="@string/back" />
 
             <TextView
+                android:id="@+id/label_name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/what_is_your_name"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:id="@+id/label_name" />
+                android:textStyle="bold" />
 
             <HorizontalScrollView
+                android:id="@+id/hscrollview_names"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:id="@+id/hscrollview_names">
+                android:layout_marginBottom="5dp" >
+
                 <LinearLayout
+                    android:id="@+id/bnt_names_containner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd1"
-                        android:onClick="nameSelected" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dadasd" />
                 </LinearLayout>
             </HorizontalScrollView>
 
             <TextView
+                android:id="@+id/text_welcome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/label_password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/password"
-                android:visibility="gone"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:id="@+id/label_password" />
+                android:visibility="gone" />
 
             <EditText
+                android:id="@+id/password_text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:inputType="textPassword"
-                android:visibility="gone"
-                android:id="@+id/password_text" />
+                android:visibility="gone" />
 
             <Button
+                android:id="@+id/submit_bnt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:onClick="submitUser"
                 android:text="@string/access"
-                android:visibility="gone"
-                android:id="@+id/submit_bnt"
-                android:onClick="submitUser" />
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

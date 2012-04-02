@@ -1,6 +1,5 @@
 package com.goliath.atm.view;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -8,7 +7,7 @@ import android.view.View;
 
 import com.goliath.atm.R;
 
-public class Withdraw extends Activity {
+public class Withdraw extends BaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
