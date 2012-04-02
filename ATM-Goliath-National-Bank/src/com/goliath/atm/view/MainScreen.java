@@ -1,13 +1,12 @@
 package com.goliath.atm.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.goliath.atm.R;
 
-public class MainScreen extends Activity {
+public class MainScreen extends BaseActivity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {

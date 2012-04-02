@@ -24,6 +24,10 @@ extract
 >>key_conta
 <<value
 
+money_notes
+>>id_atm
+<<list(note_value, amount)
+
 ##############
 
 Primeira tela

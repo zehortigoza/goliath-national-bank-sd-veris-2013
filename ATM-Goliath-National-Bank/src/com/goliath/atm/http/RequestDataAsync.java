@@ -15,22 +15,22 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
 
-import com.goliath.atm.http.parser.JsonParserInterface;
-
 import android.os.AsyncTask;
+
+import com.goliath.atm.http.json.parser.ParserInterface;
 
 public class RequestDataAsync extends AsyncTask<Void, Void, Boolean> {
 
 	private static final int TIMEOUT_SOCK = 45000;
 	private static final int TIMEOUT_CONN = 30000;
 
-	private JsonParserInterface mPaser;
+	private ParserInterface mPaser;
 	private String mUrl;
 	private JSONObject mData;
 	private RequestListenerInterface mListener;
 
 	public RequestDataAsync(String url, JSONObject sendData,
-			JsonParserInterface parser, RequestListenerInterface requester) {
+			ParserInterface parser, RequestListenerInterface requester) {
 		mUrl = url;
 		mPaser = parser;
 		mData = sendData;
@@ -40,7 +40,10 @@ public class RequestDataAsync extends AsyncTask<Void, Void, Boolean> {
 	@Override
 	protected Boolean doInBackground(Void... arg0) {
 		boolean result = false;
+		
 		try {
+			mListener.startRequest();
+			
 			HttpPost httpPost = new HttpPost(mUrl);
 			httpPost.setHeader("Content-Type", "application/json");
 

@@ -1,12 +1,11 @@
 package com.goliath.atm.view;
 
-import com.goliath.atm.R;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Balance extends Activity {
+import com.goliath.atm.R;
+
+public class Balance extends BaseActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
