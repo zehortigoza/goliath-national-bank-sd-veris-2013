@@ -3,6 +3,8 @@ package com.goliath.atm.http.json.parser;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.goliath.atm.http.RequestListenerInterface;
 import com.goliath.atm.model.User;
 
@@ -17,6 +19,8 @@ public class UsersAccountParser implements ParserInterface {
 	public void parse(String data, RequestListenerInterface requester)
 			throws Exception {
 		JSONObject json = new JSONObject(data);
+		
+		Log.v("test","Json received = ["+data+"]");
 		
 		if(json.getInt(ERROR_TAG) == 1 || json.getInt(ERROR_TAG) == 2) {
 			requester.onReceivedError(json.getInt(ERROR_TAG));

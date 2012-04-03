@@ -26,7 +26,7 @@ public class AccountAccess extends BaseActivity {
 	public static final String AG_TAG = "ag";
 	public static final String CC_TAG = "cc";
 	public static final String LIST_TAG = "list";
-	private static final String URL_REQUEST_USERS = "request_users_name/";
+	private static final String URL_REQUEST_USERS = "TestJSON/";
 	
     /** Called when the activity is first created. */
     @Override
@@ -57,7 +57,7 @@ public class AccountAccess extends BaseActivity {
 	    	
 	    	mUserList = new ArrayList<User>();
     	
-	    	RequestDataAsync request = new RequestDataAsync(mBaseUrl+URL_REQUEST_USERS, j, new UsersAccountParser(), this);
+	    	RequestDataAsync request = new RequestDataAsync(sBaseUrl+URL_REQUEST_USERS, j, new UsersAccountParser(), this);
 	    	request.execute();
     	} catch (Exception e) {
 			e.printStackTrace();
@@ -118,8 +118,7 @@ public class AccountAccess extends BaseActivity {
 				break;
 			}
     		
-    		alertDialog.setMessage(msg);
-    		
+    		alertDialog.setMessage(msg);    		
     		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
     			public void onClick(DialogInterface dialog, int which) {
     				dialog.dismiss();

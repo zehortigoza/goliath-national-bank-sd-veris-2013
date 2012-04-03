@@ -1,7 +1,9 @@
 package com.goliath.atm.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 
 import com.goliath.atm.R;
 import com.goliath.atm.http.RequestListenerInterface;
@@ -9,7 +11,7 @@ import com.goliath.atm.http.RequestListenerInterface;
 public class BaseActivity extends Activity implements RequestListenerInterface {
 	
 	private ProgressDialog mProgressDialog;
-	protected String mBaseUrl = "http://localhost/";
+	protected static String sBaseUrl = "http://192.168.43.109:9797/JSON_WS/Bank.asmx/";
 	
 	public void onReceivedData(Object data) {
 		
@@ -37,6 +39,19 @@ public class BaseActivity extends Activity implements RequestListenerInterface {
 			}
 		};
 		runOnUiThread(r);
+	}
+	
+	protected void genericHttpError() {
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle(getString(R.string.error));
+		alertDialog.setMessage(getString(R.string.generic_error));
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				return;
+			}
+		});		
+		alertDialog.show();
 	}
 
 }
