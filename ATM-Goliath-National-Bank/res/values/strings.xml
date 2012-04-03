@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, main!</string>
     <string name="app_name">ATM Goliath National Bank</string>
     
     <string name="logo_description">GNB</string>
@@ -35,4 +33,6 @@
     <string name="generic_error">Houve um erro, certifique-se que você esta conectado a internet.</string>
     <string name="account_not_found">Conta não encontrada</string>
    	<string name="account_inative">Conta inativa</string>
+   	
+   	<string name="withdraw_success">Saque realizado</string>
 </resources>
