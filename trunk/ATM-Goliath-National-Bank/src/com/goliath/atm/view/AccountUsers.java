@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,17 +24,16 @@ import com.goliath.atm.model.Account;
 import com.goliath.atm.model.User;
 
 public class AccountUsers extends BaseActivity {
+	private TextView mLabelName;//label ask to user select your name
+	private LinearLayout mLl;//layout to be populate with all users names of account
 
-	private HorizontalScrollView mHScrollView;
-	private TextView mLabelName;
-
-	private TextView mLabelPassword;
-	private EditText mEditPassword;
+	private TextView mLabelPassword;//label password
+	private EditText mEditPassword;//field password
 	private Button mSubmit;
-	private LinearLayout mLl;
+
 	private TextView mLabelWelcome;
 
-	private boolean mNameSelected = false;
+	//private boolean mNameSelected = false;
 	private User mUserSelected;	
 
 	private String mAg;
@@ -43,6 +41,7 @@ public class AccountUsers extends BaseActivity {
 	private ArrayList<User> mListUser;
 	
 	private static final String TAG_NAME_SELECTED = "user_selected";
+	
 	private static String KEY_USER_TAG = "key_user";
 	private static String PASS_USER_TAG = "pass_user";
 	private static String AG_TAG = "ag";
@@ -58,8 +57,7 @@ public class AccountUsers extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.account_users);
-
-		mHScrollView = (HorizontalScrollView) findViewById(R.id.hscrollview_names);
+		
 		mLabelName = (TextView) findViewById(R.id.label_name);
 
 		mLabelPassword = (TextView) findViewById(R.id.label_password);
@@ -110,20 +108,20 @@ public class AccountUsers extends BaseActivity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putBoolean(TAG_NAME_SELECTED, mNameSelected);
+		outState.putSerializable(TAG_NAME_SELECTED, mUserSelected);
 	}
 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 
-		mNameSelected = savedInstanceState.getBoolean(TAG_NAME_SELECTED);
+		mUserSelected = (User)savedInstanceState.getSerializable(TAG_NAME_SELECTED);
 		change();
 	}
 
 	private void change() {
-		if (mNameSelected) {
-			mHScrollView.setVisibility(View.GONE);
+		if (mUserSelected != null) {
+			mLl.setVisibility(View.GONE);
 			mLabelName.setVisibility(View.GONE);
 
 			mLabelPassword.setVisibility(View.VISIBLE);
@@ -138,16 +136,16 @@ public class AccountUsers extends BaseActivity {
 			mSubmit.setVisibility(View.GONE);
 			mLabelWelcome.setVisibility(View.GONE);
 
-			mHScrollView.setVisibility(View.VISIBLE);
+			mLl.setVisibility(View.VISIBLE);
 			mLabelName.setVisibility(View.VISIBLE);
 		}
 	}
 
 	public void back(View view) {
-		if (mNameSelected == false) {
+		if (mUserSelected == null) {
 			finish();
 		} else {
-			mNameSelected = false;
+			mUserSelected = null;
 			change();
 		}
 	}
@@ -169,15 +167,12 @@ public class AccountUsers extends BaseActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Intent i = new Intent(this, MainScreen.class);
-		startActivity(i);
 	}
 
 	public void userSelected(String name) {
 		for (User u : mListUser) {
 			if (u.getName().equals(name)) {
 				mUserSelected = u;
-				mNameSelected = true;
 				change();
 				break;
 			}

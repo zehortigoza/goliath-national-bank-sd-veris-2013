@@ -35,4 +35,7 @@
    	<string name="account_inative">Conta inativa</string>
    	
    	<string name="withdraw_success">Saque realizado</string>
+   	
+   	<string name="invalid_deposit">Valor inválido para deposito</string>
+   	<string name="success_deposit">Deposito realizado com sucesso</string>
 </resources>

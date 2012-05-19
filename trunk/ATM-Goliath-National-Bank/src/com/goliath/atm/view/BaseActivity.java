@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.view.View;
 
 import com.goliath.atm.R;
 import com.goliath.atm.http.RequestListenerInterface;
@@ -11,7 +12,7 @@ import com.goliath.atm.http.RequestListenerInterface;
 public class BaseActivity extends Activity implements RequestListenerInterface {
 	
 	private ProgressDialog mProgressDialog;
-	protected static String sBaseUrl = "http://192.168.43.109:9797/JSON_WS/Bank.asmx/";
+	protected static String sBaseUrl = "http://192.168.43.109/Goliah/JSON_WS/Bank.asmx/";
 	
 	public void onReceivedData(Object data) {
 		
@@ -52,6 +53,10 @@ public class BaseActivity extends Activity implements RequestListenerInterface {
 			}
 		});		
 		alertDialog.show();
+	}
+	
+	public void back(View view) {
+		finish();
 	}
 
 }

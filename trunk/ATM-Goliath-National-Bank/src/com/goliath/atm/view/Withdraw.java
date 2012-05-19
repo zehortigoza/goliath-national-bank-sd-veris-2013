@@ -12,7 +12,6 @@ import com.goliath.atm.R;
 import com.goliath.atm.http.RequestDataAsync;
 import com.goliath.atm.http.json.parser.CanWithdrawParser;
 import com.goliath.atm.model.Account;
-import com.goliath.atm.model.User;
 
 public class Withdraw extends BaseActivity {
 	private static int Amount100 = 10;
@@ -25,7 +24,6 @@ public class Withdraw extends BaseActivity {
 	private EditText mValueEdit;
 
 	private Account mAccount;
-	private User mUser;
 	
 	private boolean mCanWithdraw = false;
 
@@ -38,7 +36,6 @@ public class Withdraw extends BaseActivity {
 		if (extras != null) {
 			mAccount = (Account) extras
 					.getSerializable(AccountUsers.ACCOUNT_TAG);
-			mUser = (User) extras.getSerializable(AccountUsers.USER_TAG);
 		}
 
 		mValueEdit = (EditText) findViewById(R.id.edit_value_withdraw);
