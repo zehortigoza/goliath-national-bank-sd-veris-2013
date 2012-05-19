@@ -18,9 +18,9 @@ public class UsersAccountParser implements ParserInterface {
 
 	public void parse(String data, RequestListenerInterface requester)
 			throws Exception {
-		JSONObject json = new JSONObject(data);
 		
 		Log.v("test","Json received = ["+data+"]");
+		JSONObject json = new JSONObject(data);
 		
 		if(json.getInt(ERROR_TAG) == 1 || json.getInt(ERROR_TAG) == 2) {
 			requester.onReceivedError(json.getInt(ERROR_TAG));

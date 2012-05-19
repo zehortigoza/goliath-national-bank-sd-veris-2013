@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -16,6 +18,7 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.goliath.atm.http.json.parser.ParserInterface;
 
@@ -44,18 +47,35 @@ public class RequestDataAsync extends AsyncTask<Void, Void, Boolean> {
 		try {
 			mListener.startRequest();
 			
-			HttpPost httpPost = new HttpPost(mUrl);
-			httpPost.setHeader("Content-Type", "application/json");
+			String str = "?";
+			String key;
+			String value;
+			Iterator iterator = mData.keys();
+			while (iterator.hasNext()){
+				key = (String) iterator.next();
+				value = mData.getString(key);
+				
+				str += key + "=" + value + "&";
+			}
+			
+			if (str.endsWith("&")) str = str.substring(0, str.length() - 1);
+			
+			Log.v("test", str);
+			
+			HttpGet http = new HttpGet(mUrl+str);
+			
+			//HttpPost httpPost = new HttpPost(mUrl);
+			//httpPost.setHeader("Content-Type", "application/json");
 
-			StringEntity tmp = new StringEntity(mData.toString(), "UTF-8");
-			httpPost.setEntity(tmp);
-
+			//StringEntity tmp = new StringEntity(mData.toString(), "UTF-8");
+			//httpPost.setEntity(tmp);
+			
 			final HttpParams httpParameters = new BasicHttpParams();
 			HttpConnectionParams.setConnectionTimeout(httpParameters,
 					TIMEOUT_CONN);
 			HttpConnectionParams.setSoTimeout(httpParameters, TIMEOUT_SOCK);
 			final HttpClient httpclient = new DefaultHttpClient(httpParameters);
-			final HttpResponse response = httpclient.execute(httpPost);
+			final HttpResponse response = httpclient.execute(http);
 
 			InputStream is = response.getEntity().getContent();
 			
@@ -94,7 +114,7 @@ public class RequestDataAsync extends AsyncTask<Void, Void, Boolean> {
 			}
 
 		}
-		return sb.toString();
+		return sb.toString().replace("<?xml version=\"1.0\" encoding=\"utf-8\"?><string xmlns=\"http://tempuri.org/\">","").replace("</string>","");
 
 	}
 
