@@ -37,6 +37,8 @@
    	
    	<string name="withdraw_success">Saque realizado</string>
    	<string name="fail_withdraw_success">Saldo insulficiente</string>
+   	<string name="withdraw_insufficient_notes">Notas insulficientes no dispensador.</string>
+   	<string name="withdraw_invalid_value">Valor invalido</string>
    	
    	<string name="invalid_deposit">Valor inválido para deposito</string>
    	<string name="success_deposit">Deposito realizado com sucesso</string>

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.goliath.atm.R;
+import com.goliath.atm.exception.InsufficientNotesException;
+import com.goliath.atm.exception.InvalidWithdrawValueException;
 import com.goliath.atm.http.RequestDataAsync;
 import com.goliath.atm.http.json.parser.CanWithdrawParser;
 import com.goliath.atm.model.Account;
@@ -51,8 +53,10 @@ public class Withdraw extends BaseActivity {
 
 	public void doWithdraw(View view) {
 		float value = Float.parseFloat(mValueEdit.getEditableText().toString());
-		String msg = new String();
-		if (check(value, msg, false)) {
+		
+		try {
+			check(value, false);
+			
 			try {
 				JSONObject j = new JSONObject();
 				j.put(KEY_ACCOUNT_TAG, mAccount.getKey());
@@ -63,13 +67,24 @@ public class Withdraw extends BaseActivity {
 				RequestDataAsync request = new RequestDataAsync(sBaseUrl
 						+ CAN_WITHDRAW_URL, j, new CanWithdrawParser(), this);
 				request.execute();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}			
+		} catch (InsufficientNotesException e) {			
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle(getString(R.string.error));//TODO error de nota
-			alertDialog.setMessage(msg);
+			alertDialog.setTitle(getString(R.string.error));
+			alertDialog.setMessage(getString(R.string.withdraw_insufficient_notes));
+			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					return;
+				}
+			});
+			alertDialog.show();			
+		} catch (InvalidWithdrawValueException e) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle(getString(R.string.error));
+			alertDialog.setMessage(getString(R.string.withdraw_invalid_value));
 			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
@@ -92,25 +107,30 @@ public class Withdraw extends BaseActivity {
 		super.onRequestFinished(status);
 		if(status) {
 			if(mCanWithdraw) {
-				float value = Float.parseFloat(mValueEdit.getEditableText().toString());
-				String msg = new String();				
-				check(value,msg, true);
-				
-				mValueEdit.setText("0");
-				mCanWithdraw = false;
-				
-				AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-				alertDialog.setTitle(getString(R.string.withdraw_success));
-				alertDialog.setMessage(msg);
-				alertDialog.setCancelable(false);
-				alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						Withdraw.this.finish();
-						return;
-					}
-				});
-				alertDialog.show();				
+				float value = Float.parseFloat(mValueEdit.getEditableText().toString());				
+				try {
+					String notes = check(value, true);
+					
+					mValueEdit.setText("0");
+					mCanWithdraw = false;
+					
+					AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+					alertDialog.setTitle(getString(R.string.withdraw_success));
+					alertDialog.setMessage(notes);
+					alertDialog.setCancelable(false);
+					alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+							Withdraw.this.finish();
+							return;
+						}
+					});
+					alertDialog.show();	
+				} catch (InsufficientNotesException e) {			
+					e.printStackTrace();	
+				} catch (InvalidWithdrawValueException e) {
+					e.printStackTrace();
+				}			
 			} else {
 				AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 				alertDialog.setTitle(getString(R.string.error));
@@ -130,7 +150,7 @@ public class Withdraw extends BaseActivity {
 		}
 	}
 
-	private boolean check(float value, String notes, boolean updateNotes) {//TODO retorno de notas
+	private String check(float value, boolean updateNotes) throws InsufficientNotesException, InvalidWithdrawValueException {
 		int resultDivision = 0;
 		float rest = value;
 
@@ -209,13 +229,12 @@ public class Withdraw extends BaseActivity {
 
 		if (rest > 0) {
 			if (rest >= 2) {
-				notes.concat("Não existem notas sulficientes para realizar esse saque");
-				return false;
+				throw new InsufficientNotesException();
 			} else {
-				notes.concat("Valor inválido para saque");
-				return false;
+				throw new InvalidWithdrawValueException();
 			}
 		} else {
+			String notes = null;
 			if (updateNotes) {
 				Amount100 -= widraw100;
 				Amount50 -= widraw50;
@@ -224,7 +243,7 @@ public class Withdraw extends BaseActivity {
 				Amount5 -= widraw5;
 				Amount2 -= widraw2;
 
-				notes = notes.concat("Notas no dispensador:\n");
+				notes = "Notas no dispensador:\n";
 
 				if (widraw100 > 0) {
 					notes = notes.concat(widraw100 + " notas de 100\n");
@@ -250,7 +269,7 @@ public class Withdraw extends BaseActivity {
 					notes = notes.concat(widraw2 + " notas de 2\n");
 				}
 			}
-			return true;
+			return notes;
 		}
 	}
 
