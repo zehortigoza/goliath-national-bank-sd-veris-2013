@@ -6,7 +6,7 @@ import com.goliath.atm.http.RequestListenerInterface;
 
 public class BalanceParser implements ParserInterface {
 
-	private static String VALUE_TAG = "value";
+	private static String VALUE_TAG = "valor";
 
 	public void parse(String data, RequestListenerInterface requester)
 			throws Exception {

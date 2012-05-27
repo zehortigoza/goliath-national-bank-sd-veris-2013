@@ -33,9 +33,12 @@
     <string name="generic_error">Houve um erro, certifique-se que você esta conectado a internet.</string>
     <string name="account_not_found">Conta não encontrada</string>
    	<string name="account_inative">Conta inativa</string>
+   	<string name="account_without_clients">Conta sem clientes</string>
    	
    	<string name="withdraw_success">Saque realizado</string>
+   	<string name="fail_withdraw_success">Saldo insulficiente</string>
    	
    	<string name="invalid_deposit">Valor inválido para deposito</string>
    	<string name="success_deposit">Deposito realizado com sucesso</string>
+   	<string name="error_deposit">Erro ao realizar deposito</string>
 </resources>
