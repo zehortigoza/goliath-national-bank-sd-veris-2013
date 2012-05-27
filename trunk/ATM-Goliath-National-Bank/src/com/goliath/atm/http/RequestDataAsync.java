@@ -9,16 +9,14 @@ import java.util.Iterator;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.goliath.atm.http.json.parser.ParserInterface;
 
@@ -39,36 +37,36 @@ public class RequestDataAsync extends AsyncTask<Void, Void, Boolean> {
 		mData = sendData;
 		mListener = requester;
 	}
+	
+	private String convert() {
+		String str = "?";
+		
+		String key;
+		String value = null;
+		Iterator iterator = mData.keys();
+		while (iterator.hasNext()){
+			key = (String) iterator.next();
+			try {
+				value = mData.getString(key);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			str += key + "=" + value + "&";
+		}		
+		if (str.endsWith("&")) str = str.substring(0, str.length() - 1);
+		
+		return str;
+	}
 
 	@Override
 	protected Boolean doInBackground(Void... arg0) {
 		boolean result = false;
 		
 		try {
-			mListener.startRequest();
+			mListener.startRequest();			
 			
-			String str = "?";
-			String key;
-			String value;
-			Iterator iterator = mData.keys();
-			while (iterator.hasNext()){
-				key = (String) iterator.next();
-				value = mData.getString(key);
-				
-				str += key + "=" + value + "&";
-			}
-			
-			if (str.endsWith("&")) str = str.substring(0, str.length() - 1);
-			
-			Log.v("test", str);
-			
-			HttpGet http = new HttpGet(mUrl+str);
-			
-			//HttpPost httpPost = new HttpPost(mUrl);
-			//httpPost.setHeader("Content-Type", "application/json");
-
-			//StringEntity tmp = new StringEntity(mData.toString(), "UTF-8");
-			//httpPost.setEntity(tmp);
+			HttpGet http = new HttpGet(mUrl+convert());
 			
 			final HttpParams httpParameters = new BasicHttpParams();
 			HttpConnectionParams.setConnectionTimeout(httpParameters,

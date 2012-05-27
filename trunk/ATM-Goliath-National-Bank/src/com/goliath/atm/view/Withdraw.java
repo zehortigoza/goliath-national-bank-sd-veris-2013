@@ -45,9 +45,9 @@ public class Withdraw extends BaseActivity {
 		finish();
 	}
 
-	private static final String KEY_ACCOUNT_TAG = "key_conta";
-	private static final String KEY_VALUE_TAG = "value";
-	private static final String CAN_WITHDRAW_URL = "can_draw/";
+	private static final String KEY_ACCOUNT_TAG = "contaId";
+	private static final String KEY_VALUE_TAG = "valor";
+	private static final String CAN_WITHDRAW_URL = "saquar";
 
 	public void doWithdraw(View view) {
 		float value = Float.parseFloat(mValueEdit.getEditableText().toString());
@@ -68,7 +68,7 @@ public class Withdraw extends BaseActivity {
 			}
 		} else {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle(getString(R.string.error));
+			alertDialog.setTitle(getString(R.string.error));//TODO error de nota
 			alertDialog.setMessage(msg);
 			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
@@ -111,13 +111,26 @@ public class Withdraw extends BaseActivity {
 					}
 				});
 				alertDialog.show();				
+			} else {
+				AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+				alertDialog.setTitle(getString(R.string.error));
+				alertDialog.setMessage(getString(R.string.fail_withdraw_success));
+				alertDialog.setCancelable(false);
+				alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						Withdraw.this.finish();
+						return;
+					}
+				});
+				alertDialog.show();	
 			}
 		} else {
 			genericHttpError();
 		}
 	}
 
-	private boolean check(float value, String notes, boolean updateNotes) {
+	private boolean check(float value, String notes, boolean updateNotes) {//TODO retorno de notas
 		int resultDivision = 0;
 		float rest = value;
 

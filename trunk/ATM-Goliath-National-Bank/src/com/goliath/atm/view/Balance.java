@@ -8,14 +8,14 @@ import android.widget.TextView;
 import com.goliath.atm.R;
 import com.goliath.atm.http.RequestDataAsync;
 import com.goliath.atm.http.json.parser.BalanceParser;
-import com.goliath.atm.model.User;
+import com.goliath.atm.model.Account;
 
 public class Balance extends BaseActivity {
-	private static final String KEY_ACCOUNT_TAG = "key_conta";
-	private static final String URL_BALANCE = "extract/";
-	private User mUser;
+	private static final String KEY_ACCOUNT_TAG = "contaId";
+	private static final String URL_BALANCE = "extrato";
 	private Double mValue = 0.0;
 	private TextView mBalance;
+	private Account mAccount;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,8 @@ public class Balance extends BaseActivity {
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null) {
-			mUser = (User)extras.getSerializable(AccountUsers.ACCOUNT_TAG);
+			mAccount = (Account) extras
+					.getSerializable(AccountUsers.ACCOUNT_TAG);
 		} else {
 			finish();
 		}
@@ -37,7 +38,7 @@ public class Balance extends BaseActivity {
 		mBalance.setText("0.0");
 		try {
 			JSONObject j = new JSONObject();
-			j.put(KEY_ACCOUNT_TAG, mUser.getKey());
+			j.put(KEY_ACCOUNT_TAG, mAccount.getKey());
 
 			RequestDataAsync request = new RequestDataAsync(sBaseUrl
 					+ URL_BALANCE, j, new BalanceParser(), this);

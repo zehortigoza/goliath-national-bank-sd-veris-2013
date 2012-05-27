@@ -36,17 +36,13 @@ public class AccountUsers extends BaseActivity {
 	//private boolean mNameSelected = false;
 	private User mUserSelected;	
 
-	private String mAg;
-	private String mCc;
 	private ArrayList<User> mListUser;
 	
 	private static final String TAG_NAME_SELECTED = "user_selected";
 	
-	private static String KEY_USER_TAG = "key_user";
-	private static String PASS_USER_TAG = "pass_user";
-	private static String AG_TAG = "ag";
-	private static String CC_TAG = "cc";
-	private static final String AUTH_ACCOUNT_URL = "auth_account";	
+	private static String PASS_USER_TAG = "senha";
+	private static String CCID_TAG = "clienteContaId";
+	private static final String AUTH_ACCOUNT_URL = "autenticaCliente";	
 	public static final String ACCOUNT_TAG = "account";
 	public static final String USER_TAG = "user";
 	
@@ -69,8 +65,6 @@ public class AccountUsers extends BaseActivity {
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-			mAg = extras.getString(AccountAccess.AG_TAG);
-			mCc = extras.getString(AccountAccess.CC_TAG);
 			Serializable s = extras.getSerializable(AccountAccess.LIST_TAG);
 			mListUser = (ArrayList<User>) s;
 		}
@@ -156,10 +150,9 @@ public class AccountUsers extends BaseActivity {
 			mAccount = null;
 			
 			JSONObject j = new JSONObject();
-			j.put(KEY_USER_TAG, mUserSelected.getKey());
+			//j.put(KEY_USER_TAG, mUserSelected.getKey());
 			j.put(PASS_USER_TAG, mEditPassword.getEditableText().toString());
-			j.put(AG_TAG, mAg);
-			j.put(CC_TAG, mCc);
+			j.put(CCID_TAG, mUserSelected.getCCId());
 
 			RequestDataAsync request = new RequestDataAsync(sBaseUrl
 					+ AUTH_ACCOUNT_URL, j, new AuthUserAccount(), this);

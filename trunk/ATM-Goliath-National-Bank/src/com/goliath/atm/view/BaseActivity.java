@@ -19,7 +19,7 @@ public class BaseActivity extends Activity implements RequestListenerInterface {
 	}
 
 	public void onRequestFinished(boolean status) {
-		if(mProgressDialog != null) {
+		if(mProgressDialog != null && !isFinishing()) {
 			mProgressDialog.dismiss();	
 			mProgressDialog = null;
 		}

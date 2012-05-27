@@ -2,14 +2,12 @@ package com.goliath.atm.view;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -38,22 +36,6 @@ public class AccountAccess extends BaseActivity {
 
 		mAgencyEdit = (EditText) findViewById(R.id.edit_agency);
 		mAccountEdit = (EditText) findViewById(R.id.edit_account);
-
-		// debug
-		try {
-			JSONObject json = new JSONObject();
-			json.put("error", 1);
-			JSONArray array = new JSONArray();
-			JSONObject j1 = new JSONObject();
-			j1.put("name", "dadas");
-			j1.put("key", 1);
-			array.put(j1);
-			array.put(j1);
-			json.put("list",array);
-			Log.v("test","json generated="+array.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -110,11 +92,6 @@ public class AccountAccess extends BaseActivity {
 
 		if (mErroId == 0 && status == true) {
 			Intent i = new Intent(this, AccountUsers.class);
-			String agency = mAgencyEdit.getEditableText().toString();
-			String account = mAccountEdit.getEditableText().toString();
-
-			i.putExtra(AG_TAG, agency);
-			i.putExtra(CC_TAG, account);
 			i.putExtra(LIST_TAG, mUserList);
 
 			startActivity(i);
@@ -132,6 +109,8 @@ public class AccountAccess extends BaseActivity {
 			case 2:
 				msg = getString(R.string.account_inative);
 				break;
+			case 3:
+				msg = getString(R.string.account_without_clients);
 			default:
 				msg = getString(R.string.generic_error);
 				break;

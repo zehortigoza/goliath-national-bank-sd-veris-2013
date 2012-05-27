@@ -2,7 +2,7 @@ request_users_name
 >>ag
 >>cc
 <<list [name, key_user]
-<<error[1=conta não encontrada, 2=conta inativa]
+<<error[1=conta não encontrada, 2=conta inativa, 3=sem clientes]
 
 auth_account
 >>key_user
