@@ -20,7 +20,6 @@ public class AuthUserAccount implements ParserInterface {
 		try {
 			error = json.getInt(ERROR_TAG);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		
 		
