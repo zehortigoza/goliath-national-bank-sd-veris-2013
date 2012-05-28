@@ -19,7 +19,6 @@ public class Deposit extends BaseActivity {
 	private boolean mDeposit = false;
 
 	private static String DEPOSIT_URL = "deposito";
-	private static String KEY_ACCOUNT_TAG = "contaId";
 	private static String VALUE_TAG = "valor";
 	
 	private Account mAccount;

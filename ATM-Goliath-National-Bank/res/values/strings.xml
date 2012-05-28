@@ -16,6 +16,10 @@
     <string name="deposit">Depositar</string>
     <string name="balance">Extrato</string>
     <string name="logout">Sair</string>
+    <string name="doc">DOC</string>
+    <string name="ted">TED</string>
+    <string name="statement">Extrato</string>
+    <string name="boleto">Boleto</string>
     
     <string name="welcome_msg">Olá ?</string>
     
@@ -43,4 +47,13 @@
    	<string name="invalid_deposit">Valor inválido para deposito</string>
    	<string name="success_deposit">Deposito realizado com sucesso</string>
    	<string name="error_deposit">Erro ao realizar deposito</string>
+   	
+   	<string name="bank_code_label">Código do banco:(1 = Goliath; 2 = Universal)</string>
+   	<string name="value">Valor</string>
+   	<string name="transfer">Transferir</string>
+   	
+   	<string name="error_max_value_doc">Valor máximo do DOC é de 1000 reais, acima deste valor utilize TED.</string>
+   	<string name="doc_ted_ok">Transção enviada, consulte extrato para confirmar tranferência.</string>
+   	<string name="to_ted">Para:</string>
+   	<string name="select_a_pf">Selecione uma pessoa física.</string>
 </resources>

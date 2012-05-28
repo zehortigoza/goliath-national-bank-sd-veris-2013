@@ -13,6 +13,11 @@ public class BaseActivity extends Activity implements RequestListenerInterface {
 	
 	private ProgressDialog mProgressDialog;
 	protected static String sBaseUrl = "http://192.168.43.109/Goliah/JSON_WS/Bank.asmx/";
+	protected static String sBinderBaseUrl = "";
+	
+	protected static String KEY_ACCOUNT_TAG = "contaId";
+	
+	protected int sBankId = 1;//1 = goliath | 2 = universal
 	
 	public void onReceivedData(Object data) {
 		

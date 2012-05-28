@@ -28,6 +28,9 @@ public class Withdraw extends BaseActivity {
 	private Account mAccount;
 	
 	private boolean mCanWithdraw = false;
+	
+	private static final String KEY_VALUE_TAG = "valor";
+	private static final String CAN_WITHDRAW_URL = "saquar";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,15 +44,7 @@ public class Withdraw extends BaseActivity {
 		}
 
 		mValueEdit = (EditText) findViewById(R.id.edit_value_withdraw);
-	}
-
-	public void back(View view) {
-		finish();
-	}
-
-	private static final String KEY_ACCOUNT_TAG = "contaId";
-	private static final String KEY_VALUE_TAG = "valor";
-	private static final String CAN_WITHDRAW_URL = "saquar";
+	}	
 
 	public void doWithdraw(View view) {
 		float value = Float.parseFloat(mValueEdit.getEditableText().toString());

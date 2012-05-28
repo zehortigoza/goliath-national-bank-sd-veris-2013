@@ -23,6 +23,8 @@
         <activity android:name=".view.Withdraw" />
         <activity android:name=".view.Deposit" />
         <activity android:name=".view.Balance" />
+        <activity android:name=".view.Ted" />
+        <activity android:name=".view.Doc" />
     </application>
 
 </manifest>
