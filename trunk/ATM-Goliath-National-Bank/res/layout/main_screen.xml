@@ -31,7 +31,6 @@
         android:layout_below="@+id/txt_name"
         android:weightSum="2"
         android:id="@+id/first_line"
-        android:layout_marginBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
 
@@ -56,6 +55,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/first_line"
         android:weightSum="2"
+        android:id="@+id/second_line"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
 
@@ -66,6 +66,56 @@
             android:text="@string/balance"
             android:onClick="balance" />
         
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/boleto"
+            android:onClick="boleto" />        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/second_line"
+        android:id="@+id/third_line"
+        android:weightSum="2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/doc"
+            android:onClick="doc" />
+        
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ted"
+            android:onClick="ted" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/third_line"
+        android:weightSum="2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/statement"
+            android:onClick="statement" />
+        
+ 		
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

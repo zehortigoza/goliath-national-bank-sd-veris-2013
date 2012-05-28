@@ -3,6 +3,7 @@ package com.goliath.atm.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.goliath.atm.R;
 import com.goliath.atm.model.Account;
@@ -23,6 +24,8 @@ public class MainScreen extends BaseActivity {
 			mAccount = (Account)extras.getSerializable(AccountUsers.ACCOUNT_TAG);
 			mUser = (User)extras.getSerializable(AccountUsers.USER_TAG);
 		}
+		
+		((TextView) findViewById(R.id.txt_name)).setText(mUser.getName());
 	}
 	
 	public void withdraw(View view) {

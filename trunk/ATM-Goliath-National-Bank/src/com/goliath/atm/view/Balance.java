@@ -11,7 +11,6 @@ import com.goliath.atm.http.json.parser.BalanceParser;
 import com.goliath.atm.model.Account;
 
 public class Balance extends BaseActivity {
-	private static final String KEY_ACCOUNT_TAG = "contaId";
 	private static final String URL_BALANCE = "extrato";
 	private Double mValue = 0.0;
 	private TextView mBalance;

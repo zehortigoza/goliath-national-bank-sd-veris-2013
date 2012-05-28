@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import com.goliath.atm.http.RequestListenerInterface;
 
-public class CanWithdrawParser implements ParserInterface {
+public class DocParser implements ParserInterface {
 	
 	private static final String RESULT_TAG = "status";
 
