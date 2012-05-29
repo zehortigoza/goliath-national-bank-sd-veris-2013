@@ -49,6 +49,20 @@ public class MainScreen extends BaseActivity {
 		startActivity(i);
 	}
 	
+	public void ted(View view) {
+		Intent i = new Intent(this,Ted.class);
+		i.putExtra(AccountUsers.ACCOUNT_TAG, mAccount);
+		i.putExtra(AccountUsers.USER_TAG, mUser);
+		startActivity(i);	
+	}
+	
+	public void doc(View view) {
+		Intent i = new Intent(this,Doc.class);
+		i.putExtra(AccountUsers.ACCOUNT_TAG, mAccount);
+		i.putExtra(AccountUsers.USER_TAG, mUser);
+		startActivity(i);	
+	}
+	
 	public void logOut(View view) {
 		AccountAccess.setLogout(true);
 		finish();

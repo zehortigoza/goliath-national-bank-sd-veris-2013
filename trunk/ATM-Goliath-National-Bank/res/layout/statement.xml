@@ -34,7 +34,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:id="@+id/linear_layout" >
 
             <TextView
                 android:id="@+id/title_deposit"
@@ -42,43 +43,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/ted"
+                android:text="@string/statement"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-           <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/to_ted"
-                android:textColor="@color/black" />
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/pf_spinner"
-                 android:prompt="@string/to_ted" />
-            
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/value"
+                android:text="@string/header_statement"
                 android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/edit_value_doc"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:inputType="numberDecimal" />
-            
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/transfer"
-                android:onClick="doTed" />
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_pf"
-                android:onClick="addPf" />
         </LinearLayout>
     </ScrollView>
 

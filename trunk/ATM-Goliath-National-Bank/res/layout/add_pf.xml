@@ -42,28 +42,70 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/ted"
+                android:text="@string/add_pf"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-           <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/to_ted"
-                android:textColor="@color/black" />
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/pf_spinner"
-                 android:prompt="@string/to_ted" />
             
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/value"
+                android:text="@string/name"
                 android:textColor="@color/black" />
 
             <EditText
-                android:id="@+id/edit_value_doc"
+                android:id="@+id/edit_name"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="text" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cpf"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edit_cpf"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bank_code_label"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edit_bank_code"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/agency"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edit_agency"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edit_account"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -72,13 +114,8 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/transfer"
-                android:onClick="doTed" />
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_pf"
-                android:onClick="addPf" />
+                android:text="@string/save"
+                android:onClick="doSave" />
         </LinearLayout>
     </ScrollView>
 

@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -143,5 +144,11 @@ public class Ted extends BaseActivity implements OnItemSelectedListener {
 
 	public void onNothingSelected(AdapterView<?> parent) {
 
+	}
+	
+	public void addPf(View view) {
+		Intent i = new Intent(this,AddPf.class);
+		i.putExtra(AccountUsers.ACCOUNT_TAG, mAccount);
+		startActivity(i);
 	}
 }

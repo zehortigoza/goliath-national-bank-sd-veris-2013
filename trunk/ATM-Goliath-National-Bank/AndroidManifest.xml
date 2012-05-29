@@ -25,6 +25,8 @@
         <activity android:name=".view.Balance" />
         <activity android:name=".view.Ted" />
         <activity android:name=".view.Doc" />
+        <activity android:name=".view.AddPf" />
+        <activity android:name=".view.StatementActivity" />
     </application>
 
 </manifest>

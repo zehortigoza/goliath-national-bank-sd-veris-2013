@@ -56,4 +56,14 @@
    	<string name="doc_ted_ok">Transção enviada, consulte extrato para confirmar tranferência.</string>
    	<string name="to_ted">Para:</string>
    	<string name="select_a_pf">Selecione uma pessoa física.</string>
+   	<string name="add_pf">Cadastrar pessoa fisica</string>
+   	
+   	<string name="name">Nome</string>
+   	<string name="cpf">Cpf</string>
+   	<string name="save">Salvar</string>
+   	<string name="add_pf_sucess">Cadastro realizado com sucesso</string>
+   	
+   	<string name="error_fill_all_fields">Erro preencha todos os campos</string>
+   	<string name="header_statement">Data | Tipo | Banco | Agencia |  Conta | Valor | Descrição</string>   	
+   	<string name="sucess">Sucesso</string>
 </resources>
